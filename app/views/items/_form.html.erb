@@ -1,0 +1,23 @@
+<%= form_with model: item do |f| %>
+	<div>
+		<%= f.label :text %>
+		<%= f.text_field :text %>
+		<% item.errors.full_messages_for(:text).each do |message| %>
+		<div><%= message %> </div>
+		<% end %>
+	</div>	
+
+
+	<div>
+		<%= f.label :price %>
+		<%= f.input_field :price, value: number_with_precision(f.object.price, precision: 2) %>
+		<% item.errors.full_messages_for(:price).each do |message| %>
+		<div><%= message %> </div>
+		<% end %>
+	</div>
+
+
+	<div>
+		<%= f.submit 'Send' %>	
+	</div>
+<% end %>

@@ -1,0 +1,7 @@
+<h1> Your items </h1>
+<h2> see all gingerbreads you added </h2>
+<ul>
+	<%= @items.each |item|%>
+		<%= link_to item.id, item_path(item.id) %> <br/>
+	<% end %>
+</ul>	

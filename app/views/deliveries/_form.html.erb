@@ -1,0 +1,36 @@
+<%= simple_form_for delivery do |form |%>
+	<div>
+		<%= form.label :start_address%> <br/>
+		<%= form.text_field :start_address%>
+		<% delivery.errors.full_messages_for(:start_address).each do |message| %>
+		<div><%= message%> </div>
+		<% end %>
+	</div>
+
+	<div>
+		<%= form.label :end_address%><br/>
+		<%= form.text_field :end_address%>
+		<% delivery.errors.full_messages_for(:end_address).each do |message| %>
+		<div> <%= message%> </div>
+		<% end %>
+	</div>
+
+	<div>
+		<%= form.input :start_datetime, :as=> :datetime
+	%>
+	</div>
+
+	<div>
+		<%= form.input :end_datetime, :as=> :datetime
+	%>
+	</div>	
+
+	<% unless User.find(current_user.id).items.to_a.empty? %>
+	<div>
+		<%= form.label :item %> <br/>
+		<%= form.select :item, collection: User.find(current_user.id).items.to_a %>
+
+	</div>
+	<% end %>
+	<%= form.submit 'Send' %>	
+<% end %>

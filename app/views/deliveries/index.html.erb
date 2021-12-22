@@ -1,0 +1,15 @@
+<h1> New Year's Gingerbread&backery </h1>
+<h2> cook, delivery,wharehouse,eat homemade gingerbreads </h2>
+<h2> Deliveries for pickup </h2>
+<div>
+<ul>
+<% unless @delivery.nil?   %>	
+<% @delivery.each do |delivery| %>
+	<li>
+	<%= delivery.item.title %>
+	</li>
+<% end %>
+<% end %>
+</ul>
+<%= link_to "Create new delivery", new_delivery_path %>	
+</div>
